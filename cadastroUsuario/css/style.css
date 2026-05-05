@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"], 
+input[type="tel"], 
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.checkbox input {
+    margin-right: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #218838;
+}
+
+
+/*Mensagem de erro*/
+#message {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.success
+ {
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb; 
+}
+.error { 
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb;
+ }
+
+ #resposta {
+         
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.input-icon {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+
+.btn-novo {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: #27ae60;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-novo:hover {
+    background: #229954;
+}
+
+a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    position:relative;
+    top:10px;
+}
+
+.btn-consultar:hover {
+    background: #2980b9;
+}
+
+.container .btn-consultar {
+    display: block;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+
+
+.status {
+    font-weight: bold;
+}
+
+.casado {
+    color: green;
+    font-weight: bold;
+}
+
+.solteiro {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.btn-acoes {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.input-icon i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 14px;
+}
+
+.input-icon input {
+    padding-left: 35px;
+    height: 35px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
