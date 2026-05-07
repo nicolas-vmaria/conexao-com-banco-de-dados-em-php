@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require_once "conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -44,7 +47,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Executa
         $stmt->execute();
 
-        echo "Cliente cadastrado com sucesso!";
+        
+         $_SESSION["usuario"]=$usuario;
+         $_SESSION["logado"]=$login;
+         $_SESSION["email"]=$email;
+
+
+        header("Location: home.php");
+        exit;
 
     } catch (PDOException $e) {
         echo "Erro ao cadastrar: " . $e->getMessage();

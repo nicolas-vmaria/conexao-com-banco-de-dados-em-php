@@ -1,54 +1,39 @@
 <?php
-require_once "conexao.php";
+    require_once('conexao.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"]== "POST"){
+        try{
+            $login= trim($_POST["nm_login"] ?? "");
+            
+            $password= trim($_POST["ds_password"] ?? "");
 
-    try {
+            $sql = "SELECT * FROM tb_usuario WHERE 
+            nm_login=:login
+            ";
 
-        // Capturando e limpando dados do formulário
-        $login    = trim($_POST["nm_login"] ?? "");
-        $password = trim($_POST["ds_password"] ?? "");
+            $stmt = $pdo->prepare($sql);
 
-        // Validação simples
-        if ($usuario == "") {
-            die("O nome de usuário é obrigatório.");
+            $stmt->bindParam(":login",$login);
+
+            $stmt->execute();
+
+            $login = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($login && password_verify($password,$login["ds_password"])){
+                session_start();
+                $_SESSION["logado"]= $login["nm_login"];
+                $_SESSION["usuario"]= $login["nm_usuario"];
+                $_SESSION["email"]= $login["ds_email"];
+                
+
+                header("Location: home.php");
+            }else{
+                echo"Email e senha incorretos";
+            }
+
         }
-        if ($login == "") {
-            die("O nome de login é obrigatório.");
+        catch(PDOException $e){
+            echo"Erro ao logar: ". $e->getMessage();
         }
-        if ($email == "") {
-            die("O email é obrigatório.");
-        }
-        if ($password == "") {
-            die("A senha é obrigatória.");
-        }
-
-        // Hash da senha (boa prática)
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO tb_usuario
-                (nm_usuario, nm_login, ds_email, ds_password)
-                VALUES
-                (:usuario, :login, :email, :password)";
-
-        $stmt = $pdo->prepare($sql);
-
-        // Bind dos parâmetros
-        $stmt->bindParam(":usuario",  $usuario);
-        $stmt->bindParam(":login",    $login);
-        $stmt->bindParam(":email",    $email);
-        $stmt->bindParam(":password", $passwordHash);
-
-        // Executa
-        $stmt->execute();
-
-        echo "Cliente cadastrado com sucesso!";
-
-    } catch (PDOException $e) {
-        echo "Erro ao cadastrar: " . $e->getMessage();
     }
-
-} else {
-    echo "Erro no envio do formulário.";
-}
 ?>
