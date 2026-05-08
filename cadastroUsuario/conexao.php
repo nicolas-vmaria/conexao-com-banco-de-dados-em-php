@@ -3,7 +3,7 @@ $host = "localhost";
 $dbname = "aulaphp";
 $usuario = "root";
 $senha = "";
-$port = 3406;
+$port = 3306;
     /* 
     PDO - É uma camada de acesso a banco de dados que permite conectar qualquer banco de dados com a mesma sintaxe
     */ 
