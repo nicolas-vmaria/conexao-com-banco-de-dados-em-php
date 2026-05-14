@@ -1,39 +1,35 @@
 <?php
+    session_start(); 
+
     require_once('conexao.php');
 
-    if ($_SERVER["REQUEST_METHOD"]== "POST"){
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
         try{
-            $login= trim($_POST["nm_login"] ?? "");
+            $login = trim($_POST["nm_login"] ?? "");
+            $password = trim($_POST["ds_password"] ?? "");
             
-            $password= trim($_POST["ds_password"] ?? "");
-
-            $sql = "SELECT * FROM tb_usuario WHERE 
-            nm_login=:login
-            ";
+            $sql = "SELECT * FROM tb_usuario WHERE nm_login = :login";
 
             $stmt = $pdo->prepare($sql);
-
-            $stmt->bindParam(":login",$login);
-
+            $stmt->bindParam(":login", $login);
             $stmt->execute();
 
-            $login = $stmt->fetch(PDO::FETCH_ASSOC);
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC); 
 
-            if($login && password_verify($password,$login["ds_password"])){
-                session_start();
-                $_SESSION["logado"]= $login["nm_login"];
-                $_SESSION["usuario"]= $login["nm_usuario"];
-                $_SESSION["email"]= $login["ds_email"];
-                
+            if($usuario && password_verify($password, $usuario["ds_password"])){
+                $_SESSION["logado"] = $usuario["nm_login"];
+                $_SESSION["usuario"] = $usuario["nm_usuario"];
+                $_SESSION["email"] = $usuario["ds_email"];
+                $_SESSION["ultimoAcesso"] = time();
 
                 header("Location: home.php");
-            }else{
-                echo"Email e senha incorretos";
+                exit; 
+            } else {
+                echo "Email e senha incorretos";
             }
 
-        }
-        catch(PDOException $e){
-            echo"Erro ao logar: ". $e->getMessage();
+        } catch(PDOException $e){
+            echo "Erro ao logar: " . $e->getMessage();
         }
     }
 ?>

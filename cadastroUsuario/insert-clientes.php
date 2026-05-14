@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $_SESSION["usuario"]=$usuario;
          $_SESSION["logado"]=$login;
          $_SESSION["email"]=$email;
+         $_SESSION["ultimoAcesso"]=time();
 
 
         header("Location: home.php");

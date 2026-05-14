@@ -1,10 +1,11 @@
 <?php
+    
     session_start();
     if(!isset ($_SESSION["logado"]) ){
         header("Location: cadastro.html");
         exit;
     }
-
+    require_once "verifSessao.php";
     require_once("conexao.php");
 
     try{
