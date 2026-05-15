@@ -1,13 +1,14 @@
 <?php 
-require "verifSessao.php";
 session_start();
 
+require_once("conexao.php");
+require "verifSessao.php";
+
 if(!isset ($_SESSION["logado"]) ){
-    header("Location: cadastro.html");
+    header("Location: ../templates/cadastro.html");
     exit;
 }
 
-require_once("conexao.php");
 
 try{
     $id = $_GET["id"] ?? null;
@@ -18,8 +19,8 @@ try{
     $stmt->execute();
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($stmt->rowCount() == 0){
-        echo "Usuario não encontrado";
+    if(!$usuario){
+        echo "Usuário não encontrado";
         exit;
     }
 
@@ -38,7 +39,7 @@ try{
 </head>
 <body>
     <h1>Editar Usuário</h1>
-    <form action="update.php" method="post">
+    <form action="../php/update.php" method="post">
         <input type="hidden" name="id" value="<?= $usuario["id"] ?>">
         <label for="nm_usuario">Nome de Usuário:</label>
         <input type="text" id="nm_usuario" name="nm_usuario" value="<?= htmlspecialchars($usuario["nm_usuario"]) ?>" required><br><br>

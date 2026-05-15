@@ -1,9 +1,10 @@
 <?php
 
+
 $tempoLimite = 300;
 
 if (!isset($_SESSION['logado'])) {
-    header('Location: login.html');
+    header('Location: ../templates/login.html');
     exit;
 }
 
@@ -13,7 +14,7 @@ if(isset($_SESSION["ultimoAcesso"])){
     if($tempoInativo > $tempoLimite){
         session_unset();
         session_destroy();
-        header("Location: login.html?motivo=timeout");
+        header("Location: ../templates/login.html?motivo=timeout");
         exit;
     }
 }

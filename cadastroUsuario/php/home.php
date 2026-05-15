@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION["logado"])){
-        header("Location: cadastro.html");
+        header("Location: ../templates/cadastro.html");
         exit;
     }
     require_once "verifSessao.php";
@@ -36,7 +36,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
 
@@ -65,13 +65,13 @@
                     <strong><?= htmlspecialchars($u["nm_usuario"]) ?></strong>
                     <p>Login: <?= htmlspecialchars($u["nm_login"]) ?></p>
                     <p>Email: <?= htmlspecialchars($u["ds_email"]) ?></p>
-                    <a href="./editar.php?id=<?= $u["id"] ?>">Editar</a>
+                    <a href="../php/editar.php?id=<?=$u["id"] ?>">Editar</a>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
 
-    <a href="./sair.php" class="btnExit">Sair</a>
+    <a href="../php/sair.php" class="btnExit">Sair</a>
 
 </body>
 </html>

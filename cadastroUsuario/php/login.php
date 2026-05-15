@@ -22,7 +22,7 @@
                 $_SESSION["email"] = $usuario["ds_email"];
                 $_SESSION["ultimoAcesso"] = time();
 
-                header("Location: home.php");
+                header("Location: ../php/home.php");
                 exit; 
             } else {
                 echo "Email e senha incorretos";

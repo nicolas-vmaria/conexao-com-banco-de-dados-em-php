@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset ($_SESSION["logado"]) ){
-        header("Location: cadastro.html");
+        header("Location: ../templates/cadastro.html");
         exit;
     }
 
