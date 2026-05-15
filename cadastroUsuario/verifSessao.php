@@ -1,6 +1,6 @@
 <?php
 
-$tempoLimite = 10;
+$tempoLimite = 300;
 
 if (!isset($_SESSION['logado'])) {
     header('Location: login.html');

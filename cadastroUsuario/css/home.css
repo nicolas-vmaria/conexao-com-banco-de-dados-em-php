@@ -1,49 +1,95 @@
 body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            padding: 32px;
-        }
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    padding: 32px;
+}
 
-        h1 {
-            margin-bottom: 24px;
-        }
+h1 {
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    color: #222;
+}
 
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
+form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
 
-        .card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            width: 240px;
-        }
+input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    width: 260px;
+    outline: none;
+}
 
-        .card p {
-            margin: 4px 0;
-            font-size: 0.9rem;
-            color: #333;
-        }
+input[type="text"]:focus {
+    border-color: #007BFF;
+}
 
-        .card strong {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
+button[type="submit"] {
+    padding: 8px 16px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
 
-        .card a {
-            display: inline-block;
-            margin-top: 12px;
-            color: #007BFF;
-            text-decoration: none;
-        }
+button[type="submit"]:hover {
+    background: #0062cc;
+}
 
-        .btnExit{
-            display: inline-block;
-            margin-top: 24px;
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-        }
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 220px;
+}
+
+.card strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.card p {
+    margin: 4px 0;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.btnExit {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: #888;
+    text-decoration: none;
+}
+
+.btnExit:hover {
+    color: #333;
+}
